@@ -1,101 +1,39 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "fortune-client@git+ssh://git@github.com/dimitar-flyvictor/fortune-client.git#HAK-38-switch-to-superagent",
-        "scope": null,
-        "escapedName": "fortune-client",
-        "name": "fortune-client",
-        "rawSpec": "git+ssh://git@github.com/dimitar-flyvictor/fortune-client.git#HAK-38-switch-to-superagent",
-        "spec": "git+ssh://git@github.com/dimitar-flyvictor/fortune-client.git#HAK-38-switch-to-superagent",
-        "type": "hosted",
-        "hosted": {
-          "type": "github",
-          "ssh": "git@github.com:dimitar-flyvictor/fortune-client.git#HAK-38-switch-to-superagent",
-          "sshUrl": "git+ssh://git@github.com/dimitar-flyvictor/fortune-client.git#HAK-38-switch-to-superagent",
-          "httpsUrl": "git+https://github.com/dimitar-flyvictor/fortune-client.git#HAK-38-switch-to-superagent",
-          "gitUrl": "git://github.com/dimitar-flyvictor/fortune-client.git#HAK-38-switch-to-superagent",
-          "shortcut": "github:dimitar-flyvictor/fortune-client#HAK-38-switch-to-superagent",
-          "directUrl": "https://raw.githubusercontent.com/dimitar-flyvictor/fortune-client/HAK-38-switch-to-superagent/package.json"
-        }
-      },
-      "/Users/dimitar.atanasov/Desktop/Repos/wordpress-consumer-frontend/libs/operator-dashboard"
-    ]
-  ],
-  "_from": "git+ssh://git@github.com/dimitar-flyvictor/fortune-client.git#HAK-38-switch-to-superagent",
-  "_id": "fortune-client@0.2.4",
-  "_inCache": true,
-  "_location": "/fortune-client",
-  "_phantomChildren": {},
-  "_requested": {
-    "raw": "fortune-client@git+ssh://git@github.com/dimitar-flyvictor/fortune-client.git#HAK-38-switch-to-superagent",
-    "scope": null,
-    "escapedName": "fortune-client",
-    "name": "fortune-client",
-    "rawSpec": "git+ssh://git@github.com/dimitar-flyvictor/fortune-client.git#HAK-38-switch-to-superagent",
-    "spec": "git+ssh://git@github.com/dimitar-flyvictor/fortune-client.git#HAK-38-switch-to-superagent",
-    "type": "hosted",
-    "hosted": {
-      "type": "github",
-      "ssh": "git@github.com:dimitar-flyvictor/fortune-client.git#HAK-38-switch-to-superagent",
-      "sshUrl": "git+ssh://git@github.com/dimitar-flyvictor/fortune-client.git#HAK-38-switch-to-superagent",
-      "httpsUrl": "git+https://github.com/dimitar-flyvictor/fortune-client.git#HAK-38-switch-to-superagent",
-      "gitUrl": "git://github.com/dimitar-flyvictor/fortune-client.git#HAK-38-switch-to-superagent",
-      "shortcut": "github:dimitar-flyvictor/fortune-client#HAK-38-switch-to-superagent",
-      "directUrl": "https://raw.githubusercontent.com/dimitar-flyvictor/fortune-client/HAK-38-switch-to-superagent/package.json"
-    }
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "git+ssh://git@github.com/dimitar-flyvictor/fortune-client.git#1da14fe50d12f34d6fcffe5d0435b26ec2e86499",
-  "_shasum": "7523355737ff5888c2e9d175103251f8cd32c20d",
-  "_shrinkwrap": null,
-  "_spec": "fortune-client@git+ssh://git@github.com/dimitar-flyvictor/fortune-client.git#HAK-38-switch-to-superagent",
-  "_where": "/Users/dimitar.atanasov/Desktop/Repos/wordpress-consumer-frontend/libs/operator-dashboard",
+  "name": "fortune-client",
+  "description": "Library for interacting with multiple instances of Fortune",
+  "version": "0.2.4",
+  "license": "MIT",
   "author": {
     "name": "Konstantin Kudryavtsev",
     "email": "konstantin@flyvictor.com"
   },
-  "bugs": {
-    "url": "https://github.com/flyvictor/fortune-client/issues"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flyvictor/fortune-client"
   },
-  "config": {
-    "precommit": {
-      "lint": "jshint ."
-    }
+  "engines": {
+    "node": ">=0.10"
   },
   "dependencies": {
-    "cryptojs": "git+ssh://git@github.com/EugeneKostrikov/cryptojs.git#master",
+    "cryptojs": "git@github.com:EugeneKostrikov/cryptojs.git#master",
     "lodash": "~2.4.1",
     "qs": "6.3.1",
     "superagent": "3.5.0",
     "when": "~3.2.3"
   },
-  "description": "Library for interacting with multiple instances of Fortune",
   "devDependencies": {
     "fortune": "git://github.com/flyvictor/fortune.git",
     "mocha": "~1.20.1",
     "should": "~4.0.4",
-    "sinon": "~1.10.2",
-    "supertest": "~0.13.0"
-  },
-  "engines": {
-    "node": ">=0.10"
-  },
-  "gitHead": "1da14fe50d12f34d6fcffe5d0435b26ec2e86499",
-  "homepage": "https://github.com/flyvictor/fortune-client#readme",
-  "license": "MIT",
-  "name": "fortune-client",
-  "optionalDependencies": {},
-  "readme": "# Fortune Client\nLibrary for interacting with multiple instances of Fortune\n\n\nNote: this documentation is hopelessly out of date. Update is in the works but for now you'd be better off looking at the tests if you need examples.\n\n\n## Initialisation\n\n```\nvar client = require(\"fortune-client\")([ fortuneInstanceA, fortuneInstanceB ]);\n```\n\n## Methods\n\n### Get\n```\ngetResource(id, options)\ngetResources(query,options)\n```\n\nGets a single,a set of or all documents of a given resource depending on whether the id is a single number, an array or a query. Returns a promise resolved with the requested resource data.\n\nExample:\n```\nclient.getUsers({firstName: \"John\"}).then(function(data){\n  ...\n});\n```\n\n### Create\n\n```\ncreateResource(document, options)\ncreateResources(arrayOfDocuments,options)\n```\n\nCreates a new document. Returns a promise resolved with then new created document.\n\nExample:\n```\nclient.createUser({ name: \"Bob\", email: \"bob@abc.com\" })\n```\n\n### Destroy\n\n```\ndestroyResource(id, options)\ndestroyResources(query, options)\n```\n\nDestroys a single, a set of or all documents of a given resource depending on whether the id is a single number, an array or a query.\n\nExample:\n```\nclient.destroyUsers([\"Alice\", \"Bob\", \"Charlie\"])\n```\n\n### Replace\n\n```\nreplaceResource(id, document, options)\nreplaceResources(arrayOfIds, document, options)\n```\n\nReplaces the resource data for a given id with a provided document\n\nExample:\n```\nclient.replaceUser(\"Joe\", { name: \"Alice\", sexChangedOn: \"2011-10-09\"})\n```\n\n### Update\n\n```\nudpateResource(id, data, options)\nudpateResources(arrayOfIds, data, options)\n```\n\nUpdates a given resource.\n\nExample:\n\n```\nclient.udpateUser(\"Joe\", {op: \"add\", path: \"/users/0/houses/-\", value: \"1 Elm Row\"})\n```\n\n\n## Options\n\n```\nclient.getResources(null, {\n  headers: { \"content-type\": \"application/json\" }, // set any headers on the underlying request\n  fields: [\"firstName\", \"lastName\"],\n  include: [\"ref1\", \"ref2\"]\n})\n```\n\n#Running demo\n\nFrom fortune-client root folder run\n* git submodule init\n* git submodule update\n* npm install\n* cd demo/fortune\n* npm install\n* cd ../..\n* node demo/example-inproc.js\n",
-  "readmeFilename": "README.md",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/flyvictor/fortune-client.git"
+    "supertest": "~0.13.0",
+    "sinon": "~1.10.2"
   },
   "scripts": {
     "test": "node_modules/mocha/bin/mocha --recursive -R spec"
   },
-  "version": "0.2.4"
+  "config": {
+    "precommit": {
+      "lint": "jshint ."
+    }
+  }
 }
